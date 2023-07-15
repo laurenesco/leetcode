@@ -10,7 +10,7 @@
 // 			then replacing the first value with the previous last value.
 //
 
-
+// Solution 1
 class Solution {
     public void rotate(int[] nums, int k) {
         for (int i = 0; i < k; i++) {
@@ -31,3 +31,25 @@ class Solution {
         return nums;
     }
 }
+
+// Solution 2 
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int length = nums.length;
+        int[] solution = new int[length];
+
+        for (int i = 0; i < length-1; i ++) {
+            int shift = k % length;
+            int distance = length - i - 1;
+
+            if (shift <= distance) {
+                solution[i + shift] = nums[i];
+            } else {
+                int z = shift - distance - 1;
+                solution[z] = nums[i];
+            }
+        }
+    }
+}
+
+// Solution 3
