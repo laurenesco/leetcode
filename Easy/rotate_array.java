@@ -53,3 +53,26 @@ class Solution {
 }
 
 // Solution 3
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int length = nums.length;
+        ArrayList<Integer> places = new ArrayList<Integer>();
+
+        for (int i = length - 1; i >= 0; i--) {
+            int shift = k > length ? k % length : k;
+            int distance = length - i - 1;
+
+            if (shift <= distance) {
+                nums[i + shift] = nums[i];
+            } else {
+                places.add(nums[i]);
+            }
+        }
+
+        length = 0;
+        for (int i = places.size() - 1; i >= 0; i --) {
+            nums[length] = places.get(i);
+            length ++;
+        }
+    }
+}
