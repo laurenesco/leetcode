@@ -6,10 +6,8 @@ class Solution:
         matches_s = {}
         matches_t = {}
 
-        for idx in range(len(s)):
-            if matches_s.setdefault(s[idx], t[idx]) != t[idx]:
-                return False
-            if matches_t.setdefault(t[idx], s[idx]) != s[idx]:
+        for char_s, char_t in zip(s, t):
+            if matches_s.setdefault(char_s, char_t) != char_t or matches_t.setdefault(char_t, char_s) != char_s:
                 return False
 
         return True
